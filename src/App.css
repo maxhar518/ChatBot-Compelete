@@ -1,3 +1,84 @@
-body {
-  background-color: #282c34;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #333;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    /* word-spacing: 900px; */
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+}
+
+.navbar-links li {
+    margin: 0 10px;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+    color: #ddd;
+}
+
+.navbar-buttons {
+    margin-left: 740px;
+}
+.navbar-buttons .btn {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border: 1px solid white;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-buttons .btn.login {
+    background-color: transparent;
+}
+
+.navbar-buttons .btn.signup {
+    background-color: #ff6347;
+}
+
+.navbar-buttons .btn:hover {
+    background-color: white;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-links li {
+        margin: 10px 0;
+    }
+
+    .navbar-buttons {
+        margin-top: 10px;
+    }
 }

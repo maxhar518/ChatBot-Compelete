@@ -1,7 +1,7 @@
 body {
     background-color: #282c34;
-    padding-top: 100px;
-    padding-left: 300px;
+    /* padding-top: 100px;
+    padding-left: 300px; */
   }
   /* From Uiverse.io by vinodjangid07 */ 
   .form_main {
@@ -41,6 +41,7 @@ body {
     height: 40px;
     background-color: transparent;
     border: none;
+    border-top: 2px solid rgb(173, 173, 173);
     border-bottom: 2px solid rgb(173, 173, 173);
     border-radius: 30px;
     margin: 10px 0;
@@ -54,6 +55,7 @@ body {
   .inputField:focus {
     outline: none;
     border-bottom: 2px solid rgb(199, 114, 255);
+    border-top: 2px solid rgb(199, 114, 255);
   }
   
   .inputField::placeholder {
