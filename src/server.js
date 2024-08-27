@@ -18,7 +18,6 @@ const sendEmail = () => {
       refreshToken:  process.env.OAUTH_REFRESH_TOKEN,
     }
   });
-
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: 'mazharaliburirom@gmail.com',
