@@ -13,9 +13,9 @@ const sendEmail = () => {
     auth: {
       type: 'OAuth2',
       user: process.env.EMAIL_USER,
-      clientId: '888137339993-5t9ll78kavkrnmjj56t2ce1ndntkmqme.apps.googleusercontent.com' || process.env.OAUTH_CLIENTID,
-      clientSecret: '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' || process.env.OAUTH_CLIENT_SECRET,
-      refreshToken: "1//04tZUR6qHfPviCgYIARAAGAQSNwF-L9IrBLerqXxifH09qYzru0zsYDSBLnEW--pnOfShGOZF9SXqORPpqPhCnlU114fLoI-Mu4M" || process.env.OAUTH_REFRESH_TOKEN,
+      clientId:  process.env.OAUTH_CLIENTID,
+      clientSecret:  process.env.OAUTH_CLIENT_SECRET,
+      refreshToken:  process.env.OAUTH_REFRESH_TOKEN,
     }
   });
 
