@@ -13,8 +13,6 @@ const sendEmail = () => {
     auth: {
       type: 'OAuth2',
       user: process.env.EMAIL_USER,
-      clientId:  process.env.OAUTH_CLIENTID,
-      refreshToken:  process.env.OAUTH_REFRESH_TOKEN,
     }
   });
   const mailOptions = {
