@@ -14,7 +14,7 @@ const sendEmail = () => {
       type: 'OAuth2',
       user: process.env.EMAIL_USER,
       clientId:  process.env.OAUTH_CLIENTID,
-      clientSecret:  process.env.OAUTH_CLIENT_SECRET,
+      // clientSecret:  process.env.OAUTH_CLIENT_SECRET,
       refreshToken:  process.env.OAUTH_REFRESH_TOKEN,
     }
   });
