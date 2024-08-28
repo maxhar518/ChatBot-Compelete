@@ -2,6 +2,7 @@ import React from 'react';
 import './signup.css';
 
 function Signup() {
+  
   return (
 
     <form class="form_main" action="">
