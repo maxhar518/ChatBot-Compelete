@@ -1,32 +1,39 @@
 import React, { useState } from 'react';
+import axios from 'axios'
 import './OPT.css';
 
 function OTP() {
-  const [ot, setOTP] = useState('')
+  const [otp, setOTP] = useState('')
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
   const handleOTPChange = (e) => {
     setOTP(e.target.value)
   }
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    OTPcompare();
+  };
   const OTPcompare = async () => {
     try {
-      const response = await fetch('http://localhost:5000/abc', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ot })
-      });
-      const data = await response.json()
-      console.log(data);
+      const response = await axios.post('http://localhost:5000/abc', { otp });
+      console.log(response.data);
+      setSuccess(response.data?.message)
     } catch (error) {
-      console.error('Error:', error);
+      console.error(error);
+      setError('Invalid OTP. Please try again.')
     }
   };
+
   return (
     <>
-      <form className="otp-Form">
+      <form className="otp-Form" onSubmit={handleSubmit}>
 
         <span class="mainHeading">Enter OTP</span>
         <p class="otpSubheading">sent a verification code to your Gmail</p>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {success && <p>{success}</p>}
+
         <div class="inputContainer">
 
           <input maxlength="1" type="text" class="otp-input" id="otp-input1" />
@@ -37,7 +44,7 @@ function OTP() {
         </div>
         <input
           type="text"
-          value={ot}
+          value={otp}
           onChange={handleOTPChange}
           placeholder="Enter OTP"
         />

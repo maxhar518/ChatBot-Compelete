@@ -3,21 +3,47 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
+const session = require('express-session');
 
 const app = express();
 const email = 'mazharaliburirom@gmail.com';
-
+let storedOT = null
 app.use(cors());
 app.use(bodyParser.json());
 
-// Generate OTP function
+app.use(session({
+  secret: 'your_secret_key',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } 
+}));
+
 function generateOTP() {
   const otp = crypto.randomBytes(2).toString('hex');
   const otpNumber = parseInt(otp, 16) % 10000;
-  return otpNumber.toString().padStart(4, '0');
+  const ot =   otpNumber.toString().padStart(4, '0');
+  return ot
 }
 
-// Send email function
+app.post('/Send', async (req, res) => {
+  const ot = generateOTP();
+  storedOT = ot
+  const result = await sendEmail(ot);
+  res.json(result);
+});
+
+
+app.post('/abc', (req, res) => {
+  const otp = req.body.otp;
+  console.log('Received OTP:', otp);
+  console.log('Stored OT:', storedOT);
+  if (otp === storedOT) {
+    res.send({message : 'OTP matched'});
+  } else {
+    res.send({message : 'OTP does not match.'});
+  }  
+});
+
 async function sendEmail(ot) {
   try {
     const transporter = nodemailer.createTransport({
@@ -46,23 +72,6 @@ async function sendEmail(ot) {
     return { message: 'Error sending email' };
   }
 }
-
-app.post('/abc', (req, res) => {
-  const one = req.body.ot;
-  if (one) {
-    res.json({ message: 'haha' });
-  } else {
-    res.json({ message: 'ohoo' });
-  }
-});
-
-app.post('/Send', async (req, res) => {
-  const ot = generateOTP();
-  console.log(ot);
-
-  const result = await sendEmail(ot);
-  res.json(result);
-});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
