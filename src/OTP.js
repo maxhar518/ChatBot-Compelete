@@ -18,10 +18,13 @@ function OTP() {
     try {
       const response = await axios.post('http://localhost:5000/abc', { otp });
       console.log(response.data);
+      if(response.status === 200){
       setSuccess(response.data?.message)
+      }else{
+        setError('Invalid OTP. Please try again.')
+      }
     } catch (error) {
       console.error(error);
-      setError('Invalid OTP. Please try again.')
     }
   };
 
@@ -30,24 +33,16 @@ function OTP() {
       <form className="otp-Form" onSubmit={handleSubmit}>
 
         <span class="mainHeading">Enter OTP</span>
-        <p class="otpSubheading">sent a verification code to your Gmail</p>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        {success && <p>{success}</p>}
-
-        <div class="inputContainer">
-
-          <input maxlength="1" type="text" class="otp-input" id="otp-input1" />
-          <input maxlength="1" type="text" class="otp-input" id="otp-input2" />
-          <input maxlength="1" type="text" class="otp-input" id="otp-input3" />
-          <input maxlength="1" type="text" class="otp-input" id="otp-input4" />
-
-        </div>
+        <p class="otpSubheading">verification code sent to your Gmail</p>
+        {error && <p style={{ color: 'red' }}>{error}</p>} {success &&<p style={{ color: 'red' }}>{success}</p>}
         <input
-          type="text"
+          class="input"
+          type="number"
           value={otp}
           onChange={handleOTPChange}
           placeholder="Enter OTP"
         />
+        <button class="resendBtn">Forget Password</button>
         <button class="verifyButton" type="submit" onClick={OTPcompare}>Verify</button>
         <p class="resendNote">Didn't receive the code? <button class="resendBtn">Resend Code</button></p>
       </form>

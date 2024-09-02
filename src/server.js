@@ -26,10 +26,23 @@ function generateOTP() {
 }
 
 app.post('/Send', async (req, res) => {
+  const { gmail } = req?.body
+  console.log(gmail);
+  if (!gmail) {
+    res.status(200).json({message : {gmail}});
+  } else {
+    res.send({message : 'invalid Gmail'});
+  }  
   const ot = generateOTP();
   storedOT = ot
   const result = await sendEmail(ot);
   res.json(result);
+
+
+  if (!gmail) {
+    return res.status(400).json({ error: 'Please fill in gmail field' });
+  }
+
 });
 
 
@@ -38,7 +51,7 @@ app.post('/abc', (req, res) => {
   console.log('Received OTP:', otp);
   console.log('Stored OT:', storedOT);
   if (otp === storedOT) {
-    res.send({message : 'OTP matched'});
+    res.status(200).json({message : 'OTP matched'});
   } else {
     res.send({message : 'OTP does not match.'});
   }  
@@ -66,7 +79,7 @@ async function sendEmail(ot) {
 
     const info = await transporter.sendMail(mailOptions);
     console.log(`Email sent successfully: ${info.response}`);
-    return { message: 'Email sent successfully' };
+    return { message: 'Email  successfully' };
   } catch (err) {
     console.error("Error " + err);
     return { message: 'Error sending email' };

@@ -1,70 +1,46 @@
-.svg-background {
-    width: 1365px;
-    height: 600px;
-    background-image: url('./pics/Circuit\ Board.svg');
-    background-size: cover;
-    color: rgba(0, 5, 13, 1);
-}
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    /* background-color: #333; */
-    color: white;
-    font-size: 22px;
-    font-weight: 600;
-    /* word-spacing: 900px; */
-}
-
-.navbar-links {
-    list-style: none;
-    display: flex;
-}
-
-.navbar-links li {
-    margin: 0 10px;
-}
-
-.navbar-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 1em;
-    transition: color 0.3s;
-}
-
-.navbar-links a:hover {
-    color: #ddd;
-}
-
-.navbar-buttons {
-    margin-left: 740px;
-}
-.navbar-buttons .btn {
-    margin-left: 10px;
-    padding: 10px 20px;
-    border: 1px solid white;
-    border-radius: 4px;
-    color: white;
-    text-decoration: none;
-    font-size: 1em;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.navbar-buttons .btn.login {
-    background-color: transparent;
-}
-
-.navbar-buttons .btn.signup {
-    background-color: #ff6347;
-}
-
-.navbar-buttons .btn:hover {
-    background-color: white;
-    color: #333;
-}
 .routes {
-    /* padding-top: 20px; */
-    padding-left: 500px;
+  margin-top: 50px;
+  margin-left: 500px;
 }
-
+.buttoncontainer {
+    display: flex;
+    background-color: rgb(99, 73, 245);
+    width: 1355px;
+    height: 50px;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px,
+          rgba(125, 73, 245, 0.5) 5px 10px 15px;
+  }
+  
+  .button {
+    outline: 0 !important;
+    border: 0 !important;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: all ease-in-out 0.3s;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    transform: translateY(-3px);
+  }
+  
+  .icon {
+    font-size: 20px;
+  }
+  .button1 {
+    margin: 0;
+    height: auto;
+    background: transparent;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+  }
