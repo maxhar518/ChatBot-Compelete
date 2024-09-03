@@ -47,7 +47,7 @@ function Signup() {
 
   return (
     <form class="form_main" onSubmit={handleSubmit}>
-      <p class="heading">SignUp</p>
+      <p class="mainHeading">SignUp</p>
       <div class="inputContainer">
         <input
           placeholder="First Name"
@@ -95,7 +95,6 @@ function Signup() {
       <button id="button" disabled={isSubmitting}>
         {isSubmitting ? 'Submitting...' : 'Submit'}
       </button>
-      {{hasSubmitted} && <p>Email sent successfully!</p>}
       <a href="/OTP">Verify OTP</a>
       <div class="signupContainer">
         <p>Already Have an account?</p>

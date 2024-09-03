@@ -18,9 +18,9 @@ function OTP() {
     try {
       const response = await axios.post('http://localhost:5000/abc', { otp });
       console.log(response.data);
-      if(response.status === 200){
-      setSuccess(response.data?.message)
-      }else{
+      if (response.status === 200) {
+        setSuccess(response.data?.message)
+      } else {
         setError('Invalid OTP. Please try again.')
       }
     } catch (error) {
@@ -34,7 +34,12 @@ function OTP() {
 
         <span class="mainHeading">Enter OTP</span>
         <p class="otpSubheading">verification code sent to your Gmail</p>
-        {error && <p style={{ color: 'red' }}>{error}</p>} {success &&<p style={{ color: 'red' }}>{success}</p>}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {success && (
+          <p style={{ color: 'red' }}>{success}</p>
+        )}
+        {success && (() => window.location.href = '/')()}
+        
         <input
           class="input"
           type="number"

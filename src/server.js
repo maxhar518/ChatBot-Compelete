@@ -27,21 +27,21 @@ function generateOTP() {
 
 app.post('/Send', async (req, res) => {
   const { gmail } = req?.body
-  console.log(gmail);
-  if (!gmail) {
-    res.status(200).json({message : {gmail}});
-  } else {
-    res.send({message : 'invalid Gmail'});
-  }  
+  const { email } = req?.body
+  // if (gmail == email) {
+  //   res.status(200).json({message : 'User Registerde'});
+  // } else {
+  //   res.send({message : 'invalid Gmail'});
+  // }  
   const ot = generateOTP();
   storedOT = ot
   const result = await sendEmail(ot);
-  res.json(result);
+  res.json(result );
 
 
-  if (!gmail) {
-    return res.status(400).json({ error: 'Please fill in gmail field' });
-  }
+  // if (!gmail) {
+  //   return res.status(400).json({ error: 'Please fill in gmail field' });
+  // }
 
 });
 
